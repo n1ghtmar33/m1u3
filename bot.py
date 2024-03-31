@@ -7,6 +7,16 @@ bot = telebot.TeleBot(token)
 def start(message):
     bot.reply_to(message, "Привет! Я бот для управления чатом.")
 
+@bot.message_handler(commands=['info'])
+def start(message):
+    bot.reply_to(message, "Данный бот создал для практики в начинаниях в сфере программирования.")
+
+@bot.message_handler(content_types=['new_chat_members'])
+def make_some(message):
+    user_id = message.reply_to_message.from_user.id
+    bot.send_message(message.chat.id, f'Новый пользователь {user_id} присоединился(-ась) к данному каналу')
+    bot.approve_chat_join_request(message.chat.id, message.from_user.id)
+
 @bot.message_handler(commands=['ban'])
 def ban_user(message):
     if message.reply_to_message: #проверка на то, что эта команда была вызвана в ответ на сообщение 
@@ -24,17 +34,4 @@ def ban_user(message):
         bot.reply_to(message, "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите забанить.")
 
 bot.infinity_polling(none_stop=True)
-
-#aaaaaaaaa
-#123332321231231421
-#123332321231231421
-
-#123332321231231421
-#nnnnnnnnnn
-#123332321231231421
-
-#123332321231231421
-
-#123332321231231421
-
 
