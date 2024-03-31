@@ -9,7 +9,7 @@ def start(message):
 
 @bot.message_handler(commands=['info'])
 def start(message):
-    bot.reply_to(message, "Данный бот создал для практики в начинаниях в сфере программирования.")
+    bot.reply_to(message, "Данный бот создан для практики в начинаниях в сфере программирования.")
 
 @bot.message_handler(content_types=['new_chat_members'])
 def make_some(message):
